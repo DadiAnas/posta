@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2026 Anas DADI
+// SPDX-FileCopyrightText: 2026 Anas Dadi
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 package smtprelay
@@ -46,7 +46,7 @@ func TestSMTPRelaySTARTTLS(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	defer client.Close()
+	t.Cleanup(func() { _ = client.Close() })
 	if ok, _ := client.Extension("STARTTLS"); !ok {
 		t.Fatal("STARTTLS not advertised")
 	}
